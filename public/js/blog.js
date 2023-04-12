@@ -5,7 +5,7 @@ let result = document.getElementById("result");
 const getBlogs = async (tag) => {
     result.innerHTML = "";
     const data = { tag: tag };
-    fetch("http://172.24.160.1:8000/api/v1/health/searchByTag", {
+    fetch("/api/v1/health/searchByTag", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",

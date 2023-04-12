@@ -16,7 +16,7 @@ for (const [key, value] of urlParams) {
     id = `${value}`;
 }
 
-fetch(`http://172.24.160.1:8000/api/v1/health/getSingleBlog?id=${id}`, {
+fetch(`/api/v1/health/getSingleBlog?id=${id}`, {
     method: "GET", // or 'PUT'
     headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const getAllComments = async () => {
 
     getComments.innerHTML = "";
 
-    fetch(`http://localhost:4000/api/v1/health/getComment?id=${id}`, {
+    fetch(`/api/v1/health/getComment?id=${id}`, {
         method: "GET", // or 'PUT'
         headers: {
             "Content-Type": "application/json",
