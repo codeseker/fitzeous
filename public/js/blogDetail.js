@@ -16,7 +16,7 @@ for (const [key, value] of urlParams) {
     id = `${value}`;
 }
 
-fetch(`http://192.168.250.20:80/api/v1/health/getSingleBlog?id=${id}`, {
+fetch(`http://172.24.160.1:8000/api/v1/health/getSingleBlog?id=${id}`, {
     method: "GET", // or 'PUT'
     headers: {
         "Content-Type": "application/json",

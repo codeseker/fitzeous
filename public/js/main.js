@@ -6,7 +6,7 @@ let cnt = 0;
 const getBlogs = async (tag) => {
     result.innerHTML = "";
     const data = { tag: tag };
-    fetch("http://192.168.250.20:80/api/v1/health/searchByTag", {
+    fetch("http://172.24.160.1:8000/api/v1/health/searchByTag", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",
