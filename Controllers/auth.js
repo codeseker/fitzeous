@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const User = require("../Models/user");
 
 
-const createUser = async(req, res)=>{
-    const {email, username, password} = req.body;
+const createUser = async (req, res) => {
+    const { email, username, password } = req.body;
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(password, salt);
 
@@ -21,14 +21,17 @@ const createUser = async(req, res)=>{
     }
 
     const token = await jwt.sign(data, process.env.JWT_SECRET);
-    res.json({token, success: "true"});
-    
+    res.json({ token, success: "true" });
+
 }
 
-const login = async(req, res)=>{
-    const {email, password} = req.body;
+const login = async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(401).json({ msg: "Please provide email and password properly" });
+    }
 
-    const user = await User.findOne({email});
+    const user = await User.findOne({ email });
     const data = {
         user: {
             id: user._id
@@ -37,19 +40,19 @@ const login = async(req, res)=>{
     let success = false;
 
     const passwordCompare = await bcrypt.compare(password, user.password);
-    if(!passwordCompare){
+    if (!passwordCompare) {
         success = false;
-        res.status(400).send({success, error: "Please provide proper credentials"});
+        res.status(400).send({ success, error: "Please provide proper credentials" });
     }
 
     success = true;
-    
+
     const token = await jwt.sign(data, process.env.JWT_SECRET);
-    res.json({token, success});
+    res.json({ token, success });
 
 }
 
-const getUser = async (req, res)=>{
+const getUser = async (req, res) => {
     let userId = req.user.id;
     const user = await User.findById(userId).select("-password");
     res.json(user);
