@@ -7,7 +7,7 @@ login.addEventListener("click", async () => {
         password: password.value
     }
     // console.log(data);
-    const response = await fetch("http://172.24.160.1:8000/api/v1/auth/login", {
+    const response = await fetch("/api/v1/auth/login", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",

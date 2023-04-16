@@ -12,7 +12,7 @@ signup.addEventListener("click", async (e) => {
         username: username.value,
         password: password.value,
     }
-    const response = await fetch("http://172.24.160.1:8000/api/v1/auth/register", {
+    const response = await fetch("/api/v1/auth/register", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",
@@ -22,6 +22,6 @@ signup.addEventListener("click", async (e) => {
     const json = await response.json();
     if (json.success) {
         localStorage.setItem("auth-token", json.token);
-        window.location = ('http://172.24.160.1:8000/login.html')
+        window.location = ('/login.html')
     }
 })
