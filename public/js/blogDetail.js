@@ -15,11 +15,12 @@ for (const [key, value] of urlParams) {
     // console.log(`${key}:${value}`);
     id = `${value}`;
 }
-
+let authToken = localStorage.getItem('auth-token');
 fetch(`/api/v1/health/getSingleBlog?id=${id}`, {
     method: "GET", // or 'PUT'
     headers: {
         "Content-Type": "application/json",
+        "auth-token": authToken
     },
 })
     .then((response) => response.json())

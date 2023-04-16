@@ -5,10 +5,12 @@ let result = document.getElementById("result");
 const getBlogs = async (tag) => {
     result.innerHTML = "";
     const data = { tag: tag };
+    let authToken = localStorage.getItem('auth-token');
     fetch("/api/v1/health/searchByTag", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",
+            "auth-token": authToken
         },
         body: JSON.stringify(data),
     })
