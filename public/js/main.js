@@ -4,6 +4,10 @@ let login = document.getElementById("login");
 let signup = document.getElementById('signup');
 
 let authToken = localStorage.getItem("auth-token");
+console.log(authToken)
+if(!authToken){
+    window.location = ("/signup.html")
+}
 
 if (authToken) {
     login.innerText = "Logout"
