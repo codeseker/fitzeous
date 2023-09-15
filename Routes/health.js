@@ -7,3 +7,7 @@ router.route("/searchByTag").post(fetchuser, searchBytag);
 router.route("/getSingleBlog").get(fetchuser, getSingleBlog);
 
 module.exports = router;
+
+
+
+
